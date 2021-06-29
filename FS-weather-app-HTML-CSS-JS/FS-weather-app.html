@@ -1,0 +1,121 @@
+<!--boiler plate HTML code-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--link to bootsrtap JS code-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+
+    <!--link to fontawesome icons-->
+    <script
+      src="https://kit.fontawesome.com/cf81264ce9.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!--link to run axios, there are 2 links, which one to copy?-->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <!--link to my css stylesheet-->
+    <link href="src/FS-weather-app.css" rel="stylesheet" />
+
+    <!--title of the webpage-->
+    <title>FS Weather Application</title>
+  </head>
+
+  <!--HTML body-->
+  <body>
+    <!--wrap text in a container for bootstrap to work-->
+    <div class="container">
+      <!--apply border styling using this wrap around class-->
+
+      <!--horizontally styled list of cities user can access easily-->
+      <ul class="cities">
+        <li>Paris</li>
+        <li>Lisbon</li>
+        <li>London</li>
+        <li>San Francisco</li>
+      </ul>
+
+      <!--user can enter a city in this search form-->
+      <form>
+        <input
+          type="text"
+          placeholder="Enter a city name"
+          class="city"
+          id="city-input-value"
+        />
+        <input type="submit" id="submit-button" />
+      </form>
+
+      <!--top screen display divided into 3 (3x4=12 columns)-->
+      <div class="row">
+        <!--left side display-->
+        <div class="col border p-3 mt-5 mb-5 rounded shadow">
+          H/L<br />24°c/f
+        </div>
+        <!--center display-->
+        <div class="col border p-3 mt-1 mb-1 rounded shadow">
+          <!--user entered city name appears here-->
+
+          <h3 id="city-name">Cambridge</h3>
+          <br />
+          <h4 id="change-date">Tue 5:45am</h4>
+          <br /><i class="far fa-sun"></i> <br />
+          <h4 id="current-temp">28°C</h4>
+          <a href="#####"><h5 id="celcius-conversion">°C</h5></a>
+          <a href="#####"><h5 id="fahrenheit-conversion">°F</h5></a>
+          <br /><span id="weather-description">Sunny</span>
+        </div>
+        <div class="col border p-3 mt-5 mb-5 rounded shadow">
+          Precipitation:
+          <span id="precipitation">2</span>%<br />
+          Humidity:
+          <span id="humidity">67</span>%<br />
+          Wind:
+          <span id="wind">8</span>km/h
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col border rounded shadow">
+          Wed <br />
+          <!--weather icon 1-->
+
+          <i class="far fa-sun"></i> <br />
+          24°c/f
+        </div>
+
+        <div class="col border rounded shadow">
+          Thu <br />
+          <i class="far fa-sun"></i> <br />
+          26°c/f
+        </div>
+
+        <div class="col border rounded shadow">
+          Fri <br /><i class="fas fa-cloud-sun"></i><br />
+          26°c/f
+        </div>
+
+        <div class="col border rounded shadow">
+          Sat <br /><i class="fas fa-cloud-showers-heavy"></i><br />
+          27°c/f
+        </div>
+
+        <div class="col border rounded shadow">
+          Sun <br /><i class="fas fa-cloud"></i><br />
+          24°c/f
+        </div>
+      </div>
+    </div>
+
+    <script src="src/FS-weather-app.js"></script>
+  </body>
+</html>
