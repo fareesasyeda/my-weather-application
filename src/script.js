@@ -46,18 +46,25 @@ function showTemperature(response) {
   //console.log(response);
   //console.log(response.data);
   //console.log(response.data.name);
-  console.log(response.data.main.temp);
+  //console.log(response.data.main.temp);
+  //console.log(response.data.weather[0].icon);
   //display name that API is giving us back instead of the name that the user types
   document.querySelector("#city-name").innerHTML = response.data.name;
-  document.querySelector("#current-temp").innerHTML = Math.round(
-    response.data.main.temp
-  );
+  fahrenheitTemperature = Math.round(response.data.main.temp);
+  document.querySelector("#current-temp").innerHTML = fahrenheitTemperature;
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
   document.querySelector("#weather-description").innerHTML =
-    response.data.weather[0].main;
+    response.data.weather[0].description;
+  let iconElement = document.querySelector("#weather-icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
 function changeCity(event) {
@@ -76,7 +83,8 @@ function changeCity(event) {
   //let city = cityInput.value;
   //combining 2 steps in 1
   let city = document.querySelector("#city-input-value").value;
-  let units = "metric";
+  //can change this to metric
+  let units = "imperial";
   let apiUrl = `${apiEndpoint}?q=${city}&appid=${apiKey}&units=${units}`;
   console.log(apiUrl);
   console.log(axios);
@@ -99,14 +107,27 @@ submitFormButton.addEventListener("click", changeCity);
 //function celciusTemp(event) {
 //event.preventDefault();
 //let currentTemp = document.querySelector("#current-temp");
-//currentTemp.innerHTML = 29;
+//let conv = (currentTemp.value - 32) * 0.5555;
+//currentTemp.innerHTML = conv;
 //}
-//function convertTofahrenheitTemp(event) {
-//event.preventDefault();
-//let currentTemp = document.querySelector("#current-temp");
-//currentTemp.innerHTML = 66;
-//}
-//let celciusClick = document.querySelector("#celcius-conversion");
-//celciusClick.addEventListener("click", celciusTemp);
-//let fahrenheitClick = document.querySelector("#fahrenheit-conversion");
-//fahrenheitClick.addEventListener("click", convertTofahrenheitTemp);
+function convertToCelciusTemp(event) {
+  event.preventDefault();
+  let currentTemp = document.querySelector("#current-temp");
+  let celciusTemp = (fahrenheitTemperature - 32) * (5 / 9);
+  currentTemp.innerHTML = Math.round(celciusTemp);
+}
+
+function convertToFahrenheitTemp(event) {
+  event.preventDefault();
+  let currentTemp = document.querySelector("#current-temp");
+  let fahrenheitTemp = fahrenheitTemperature;
+  currentTemp.innerHTML = Math.round(fahrenheitTemp);
+}
+
+let fahrenheitClick = document.querySelector("#fahrenheit-conversion");
+fahrenheitClick.addEventListener("click", convertToFahrenheitTemp);
+
+let celciusClick = document.querySelector("#celcius-conversion");
+celciusClick.addEventListener("click", convertToCelciusTemp);
+
+let fahrenheitTemperature = null;

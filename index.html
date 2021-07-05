@@ -37,50 +37,60 @@
       <!--apply border styling using this wrap around class-->
 
       <!--horizontally styled list of cities user can access easily-->
-      <ul class="cities">
+      <!--ul class="cities">
         <li>Paris</li>
         <li>Lisbon</li>
         <li>London</li>
         <li>San Francisco</li>
-      </ul>
+      </ul>-->
 
       <!--user can enter a city in this search form-->
-      <form>
-        <input
-          type="text"
-          placeholder="Enter a city name"
-          class="city"
-          id="city-input-value"
-        />
-        <input type="submit" id="submit-button" />
-      </form>
-
+      <div class="row">
+        <div class="col p-6 mt-5 mb-5">
+        <form>
+          <input
+            type="text"
+            placeholder="Enter a city name"
+            class="city"
+            id="city-input-value"
+            autocomplete="off"
+          />
+          </div>
+          <div class=" col p-6 mt-5 mb-5">
+          <input
+            type="submit"
+            id="submit-button"
+            value="Search"
+            class="btn btn-primary"
+          />
+        </form>
+        </div>
+      </div>
       <!--top screen display divided into 3 (3x4=12 columns)-->
       <div class="row">
         <!--left side display-->
         <div class="col border p-3 mt-5 mb-5 rounded shadow">
-          H/L<br />24°c/f
+         <!-- H/L<br />24°c/f-->
+         <h5 id="change-date">Tue 5:45am</h4>
         </div>
         <!--center display-->
         <div class="col border p-3 mt-1 mb-1 rounded shadow">
           <!--user entered city name appears here-->
 
-          <h3 id="city-name">Cambridge</h3>
-          <br />
-          <h4 id="change-date">Tue 5:45am</h4>
-          <br /><i class="far fa-sun"></i> <br />
-          <h4 id="current-temp">28°C</h4>
+          <h1 id="city-name">Cambridge</h1>
+          <img src="http://openweathermap.org/img/wn/04d@2x.png" alt="clear" id="weather-icon" class="float-left"><br />
+          <h4 id="current-temp">28</h4>
           <a href="#####"><h5 id="celcius-conversion">°C</h5></a>
           <a href="#####"><h5 id="fahrenheit-conversion">°F</h5></a>
           <br /><span id="weather-description">Sunny</span>
         </div>
         <div class="col border p-3 mt-5 mb-5 rounded shadow">
-          Precipitation:
-          <span id="precipitation">2</span>%<br />
-          Humidity:
+          <!--Precipitation:
+          <span id="precipitation">2</span>%<br />-->
+          <h5>Humidity:
           <span id="humidity">67</span>%<br />
           Wind:
-          <span id="wind">8</span>km/h
+          <span id="wind">8 </span>km/h</h5>
         </div>
       </div>
 
@@ -114,13 +124,16 @@
           24°c/f
         </div>
       </div>
-      <br />
-      <a href="https://github.com/fareesasyeda/my-weather-application"
-        >Open-source code</a
-      >
-      by Fareesa Syeda
+      <small>
+        <a
+          href="https://github.com/fareesasyeda/my-weather-application"
+          target="blank"
+          >Open-source code</a
+        >
+        by Fareesa Syeda
+        <!--This project was coded by Fareesa Syeda and is 'open-sourced on Github' and 'hosted on Netlify'-->
+      </small>
     </div>
-
     <script src="src/script.js"></script>
   </body>
 </html>
