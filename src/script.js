@@ -41,10 +41,41 @@ function formatDate(placeHolderDate) {
 let date = new Date();
 formatDate(date);
 
+function getForecast(coordinates) {
+  console.log(coordinates.lat);
+  console.log(coordinates.lon);
+  let apiKey = "6cb3c244f40c2fba37f9f592c3aba492";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}}&appid=${apiKey}&units=imperial`;
+  console.log(apiUrl);
+}
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+  let days = ["Wed", "Thu", "Fri"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+        <div class="col-2 border rounded shadow">
+          <div class="weather-forecast-date">
+          ${day} </div>
+         <img src="http://openweathermap.org/img/wn/50d@2x.png" alt="" width="36" /> <br />
+          <div class ="weather-forecast-temperatures">
+            <span class="weather-forecast-temperature-max">24°</span>
+            <span class="weather-forecast-temperature-min"> 18°</span>
+            </div>
+        </div></div>`;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+  console.log(forecastHTML);
+}
+
 //challenge 2 change name of city based on user input value
 function showTemperature(response) {
   //console.log(response);
-  //console.log(response.data);
+  console.log(response.data);
   //console.log(response.data.name);
   //console.log(response.data.main.temp);
   //console.log(response.data.weather[0].icon);
@@ -65,6 +96,8 @@ function showTemperature(response) {
   );
 
   iconElement.setAttribute("alt", response.data.weather[0].description);
+
+  getForecast(response.data.coord);
 }
 
 function changeCity(event) {
@@ -91,10 +124,12 @@ function changeCity(event) {
   axios.get(`${apiUrl}&appid=${apiKey}`).then(showTemperature);
   //}
 }
+
 let submitFormButton = document.querySelector("#submit-button");
 //submit type or click type???
 submitFormButton.addEventListener("click", changeCity);
 
+displayForecast();
 //week 5
 //3
 //function showTemperature(response) {
